@@ -1,0 +1,5 @@
+gcview
+*.d
+*.o
+.*.swp
+session.vim
