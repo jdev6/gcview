@@ -12,6 +12,10 @@ $(OUT): $(OBJS)
 install: $(OUT)
 	install $(OUT) $(PREFIX)
 
+layout: $(OUT)
+	mkdir  ~/.local/share/gcview || :
+	cp layout.png ~/.local/share/gcview/
+
 debug: CFLAGS += -ggdb
 debug: $(OUT)
 

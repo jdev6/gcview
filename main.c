@@ -50,6 +50,16 @@ int main() {
 	tryto(event_queue = al_create_event_queue());
 
 	layout = al_load_bitmap("layout.png");
+	if (!layout) {
+		ALLEGRO_PATH* path1 = al_get_standard_path(ALLEGRO_USER_DATA_PATH);
+		ALLEGRO_PATH* path2 = al_create_path("layout.png");
+		al_join_paths(path1,path2);
+		const char* path = al_path_cstr(path1, '/');
+		lprintf("%s",path);
+		layout = al_load_bitmap(path);
+		al_destroy_path(path1);
+		al_destroy_path(path2);
+	}
 	font = al_create_builtin_font();
 
 	al_register_event_source(event_queue, al_get_keyboard_event_source());
